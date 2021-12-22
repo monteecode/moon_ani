@@ -12,3 +12,42 @@ body {
 .moons {
   height: 100vh;
 }
+/* 
+.moons {
+  /* position: relative; */
+/* overflow: hidden; 
+  flex: 0 0 auto;
+}*/
+
+/* .allMoons {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  position: absolute;
+  display: block;  */
+/* top: 0; */
+/*left: 0;
+  width: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg) translateY(-80px);
+  transform-origin: right top; 
+}*/
+
+/* .allMoons h2 {
+ transform: rotate(-270deg) translateX(350px); 
+}*/
+
+/* .scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+} */
