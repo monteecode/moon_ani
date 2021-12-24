@@ -7,6 +7,8 @@ import fullMoon from "./images/full_moon.jpeg";
 import waningGib from "./images/waning_gib.jpeg";
 import lastQuarter from "./images/last_quarter.jpeg";
 import waning from "./images/waning_cres.jpeg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./App.css";
 
@@ -19,7 +21,67 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    //window.addEventListener("scroll", this.parallaxShift);
+    gsap.registerPlugin(ScrollTrigger);
+    // gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".new",
+    //     start: "20px 20%",
+    //     pin: true,
+    //     markers: true,
+    //   },
+    // });
+
+    // gsap.to(
+    //   gsap.utils.toArray(".moons").forEach((moon, i) => {
+    //     ScrollTrigger.create({
+    //       trigger: moon,
+    //       start: "top top",
+    //       pin: true,
+    //     });
+    //   })
+    // );
+    gsap.utils.toArray(".moons").forEach((moon, i) => {
+      gsap.to(moon, {
+        x: 100,
+        opacity: 0,
+        duration: 5,
+        scrollTrigger: {
+          trigger: "#thirdCircle",
+          markers: true,
+          start: "top center",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      // ScrollTrigger.create({
+      //   trigger: moon,
+      //   start: "top top",
+      //   pin: true,
+      //   markers: true,
+
+      //   //   horizontal: true,
+      // }).animate({
+      //   xPercent: -20,
+      //   opacity: 0,
+      //   stagger: 0.2,
+      //   duration: 2,
+      //   scale: -1,
+      //   ease: "back",
+      // });
+    });
+  }
+
+  componentWillUnmount() {
+    //window.removeEventListener("scroll", this.parallaxShift);
+  }
+
+  parallaxShift = () => {
+    this.setState({
+      offset: window.pageYOffset,
+    });
+  };
 
   render() {
     return (
@@ -28,7 +90,7 @@ class App extends React.Component {
           <h1>Moon Phase Animation</h1>
         </header>
         <div className="allMoons">
-          <div className="new moons">
+          <div className="moons">
             <h2>New Moon</h2>
             <img className="new" src={newMoon} alt="new moon" />
           </div>
